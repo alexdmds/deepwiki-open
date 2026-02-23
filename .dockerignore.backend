@@ -1,0 +1,43 @@
+# Ignore frontend files for backend-only build
+node_modules
+.next
+src
+public
+package.json
+package-lock.json
+next.config.ts
+tsconfig.json
+tailwind.config.js
+postcss.config.mjs
+
+# Ignore development files
+.git
+.gitignore
+*.md
+.vscode
+.idea
+
+# Ignore Python cache
+**/__pycache__
+**/*.pyc
+**/*.pyo
+**/*.pyd
+.Python
+
+# Ignore logs
+**/logs
+*.log
+
+# Ignore environment files (but keep them for docker build context if needed)
+# .env
+
+# Ignore test files
+**/tests
+**/*_test.py
+**/*_tests.py
+pytest.ini
+.pytest_cache
+
+# Ignore documentation
+docs
+*.md

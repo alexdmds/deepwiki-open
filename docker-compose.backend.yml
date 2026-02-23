@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile.backend
+    container_name: deepwiki-backend
+    ports:
+      - "${PORT:-8001}:${PORT:-8001}"
+    environment:
+      - PORT=${PORT:-8001}
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - GOOGLE_API_KEY=${GOOGLE_API_KEY}
+      - NODE_ENV=production
+    env_file:
+      - .env
+    restart: unless-stopped
+    volumes:
+      # Optional: mount .env file if not using env_file
+      # - ./.env:/app/.env:ro
+      # Optional: mount api directory for development
+      # - ./api:/app/api:ro
+    networks:
+      - deepwiki-network
+
+networks:
+  deepwiki-network:
+    driver: bridge
